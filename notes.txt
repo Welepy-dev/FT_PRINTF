@@ -1,0 +1,42 @@
+
+
+
+
+
+printf("|%10d|,\n", 42);		right align  // Output: |        42|
+
+
+
+printf("|%010d|\n", 42); 		 right align with 0// Output: |0000000042|
+
+
+
+printf("|%-10d|\n", 42); 		 left align// Output: |42        |
+
+
+
+printf("|%.2f|\n", 3.14159);   		specifies decimals things idk// Output: |3.14|
+
+printf("|%.2s|\n", hello);   		specifies decimals things idk// Output: |hel|
+
+in other words, with floating points limits the numbers next to the . to the specified number
+in other words, with strings limits the characters printed next to the . to the specified number
+
+e.g printf("|%08.2f|\n", 3.1);   // Output: |000003.10|
+
+
+printf("|%#x|\n", 255);     for hexadecimal values # adds a 0x or 0X prefix  // Output: |0xff|
+printf("|%#x|\n", 10);     for hexadecimal values # adds a 0  prefix// Output: |012|
+printf("|%#f|\n", 5.0);     # ensures a decimal point is always displayed, even if there are no decimals.// Output: |5.000000|
+printf("|%#.0f|\n", 5.0);    // Output: |5.|
+printf("|%#.0f|\n", 5.25);   // Output: |5.|
+printf("|%#.2f|\n", 5.0);    // Output: |5.00|
+
+printf("|%+d|\n", 42);   // Output: |+42| %+d forces a + for positive numbers
+printf("|%+d|\n", -42);  // Output: |-42|
+
+printf("|% d|\n", 42);    // Output: | 42| if there is a space prints a space between
+printf("|% d|\n", -42);   // Output: |-42|
+
+
+https://chatgpt.com/share/672e5375-222c-800c-904c-7af7afdc30a2
