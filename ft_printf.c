@@ -69,50 +69,50 @@ int	upper(unsigned int decimalnumber)
 	return (i);
 }
 
-int	find_specifier(char myString, va_list args)
+int	find_specifier(char *string, va_list args)
 {
 	int	length;
 
 	length = 0;
-	if (myString == 'c')
-		length += ft_putchar(va_arg(args, int));
-	else if (myString == 's')
+	if (*string == 'c')
+		length += ft_putchar(va_arg(args, int));				//fetches from args "argument pointer the next argument that fits the type given"
+	else if (*string == 's')
 		length += ft_putstr(va_arg(args, char *));
-	else if (myString == 'p')
+	else if (*string == 'p')
 		length += ft_print_ptr(va_arg(args, unsigned long long));
-	else if (myString == 'd' || myString == 'i')
+	else if (*string == 'd' || *string == 'i')
 		length += ft_putnbr(va_arg(args, int));
-	else if (myString == 'u')
+	else if (*string == 'u')
 		length += ft_print_unsigned(va_arg(args, unsigned int));
-	else if (myString == 'x')
+	else if (*string == 'x')
 		length += lower(va_arg(args, unsigned int));
-	else if (myString == 'X')
+	else if (*string == 'X')
 		length += upper(va_arg(args, unsigned int));
-	else if (myString == '%')
+	else if (*string == '%')
 		length += ft_putchar('%');
+	else if (*string == '#')
+		length += print_hash(*string + 1, args);
 	return (length);
 }
 
-int	ft_printf(const char *myString, ...)
+int	ft_printf(const char *string, ...)
 {
 	int		length;
-	int		i;
-	va_list	args;
+	va_list	args;					//creates an object with the list of the arguments, args is a pointer to a structure that holds information of the argumetns passed, initially the first argument
 
-	i = 0;
 	length = 0;
-	va_start(args, myString);
-	while (myString[i] != '\0')
+	va_start(args, string);		//initializes a vecto with the list of the
+	while (*string)
 	{
-		if (myString[i] == '%')
+		if (*string == '%')
 		{
-			length += find_specifier(myString[i + 1], args);
-			i++;
+			length += find_specifier(*string + 1, args);
+			++string;
 		}
 		else
-			length += ft_putchar(myString[i]);
-		i++;
+			length += ft_putchar(*string);
+		++string;
 	}
-	va_end (args);
+	va_end (args);				//cleans stuff
 	return (length);
 }
