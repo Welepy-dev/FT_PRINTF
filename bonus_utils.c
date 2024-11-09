@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-#include "ft_printf.h"
-
 bool  ft_isdigit(int c)
 {
     return (c >= '0' && c <= '9');
