@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include <stdbool.h>
 
 int	upper(unsigned int decimalNumber);
 int	lower(unsigned int decimalNumber);
@@ -41,5 +42,9 @@ char	*ft_uitoa(unsigned int n);
 void	ft_put_ptr(uintptr_t num);
 
 size_t	ft_strlen(const char *s);
+
+bool  ft_isdigit(int c);
+
+size_t num_len(int n);
 
 #endif
