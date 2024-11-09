@@ -101,29 +101,28 @@ int ft_printf(const char *string, ...)
 {
     int     length = 0;
     va_list args;
+    int 	allign;
 
+    allign = 0;
     va_start(args, string);
     while (*string)
     {
         if (*string == '%')
         {
-            // Handle '#' flag
             if (*(string + 1) == '#')
             {
                 length += print_hash((char *)(string + 2), args);
                 string += 3;
             }
-            // Handle '+' flag for positive integer and float types
             else if (*(string + 1) == '+')
             {
-                // Check if the specifier is 'd', 'i', or 'f'
                 if (*(string + 2) == 'd' || *(string + 2) == 'i')
                 {
                     int num = va_arg(args, int);
                     if (num >= 0)
                         length += ft_putchar('+');
                     length += ft_putnbr(num);
-                    string += 3; // Move past %+d or %+i
+                    string += 3;
                 }
                 else if (*(string + 2) == 'f')
                 {
@@ -131,15 +130,40 @@ int ft_printf(const char *string, ...)
                     if (num >= 0)
                         length += ft_putchar('+');
                     length += put_float(num, 6);
-                    string += 3; // Move past %+f
+                    string += 3;
                 }
                 else
-                {
-                    // Unrecognized format after '+', handle error or ignore
                     string += 2;
-                }
             }
-            // Handle other specifiers
+	    else if (*(string + 1) == ' ')
+	    {
+		if (*(string + 2) == 'd' || *(string + 2) == 'i' || *(string + 2) == 'f')
+		{
+		    int num = va_arg(args, int);
+		    if (num >= 0)
+			length += ft_putchar(' ');
+		    length += ft_putnbr(num);
+		    string += 3;
+		    
+	    	}
+	    }
+	    else if (ft_isdigit(*(string + 1)))
+	    {
+		    while (ft_isdigit(*(string + 1)))
+		    {
+			    allign = allign * 10 + (*(string + 1) - '0');
+			    string++;
+		    }
+		    int num = va_arg(args, int);
+		    int i = 0;
+		    while (i < allign - num_len(num))
+		    {
+			    length += ft_putchar(' ');
+			    i++;
+		    }
+		    length += find_specifier((char *)(string + 1), args);
+		    string += 2;
+	    }
             else
             {
                 length += find_specifier((char *)(string + 1), args);
@@ -155,8 +179,5 @@ int ft_printf(const char *string, ...)
     va_end(args);
     return length;
 }
-
-
-
 //search tommorow a way to send the address of the string without using structs of global variable
 //another way is to use a static iterator
