@@ -75,7 +75,7 @@ int	find_specifier(char *string, va_list args)
 
 	length = 0;
 	if (*string == 'c')
-		length += ft_putchar(va_arg(args, int));				//fetches from args "argument pointer the next argument that fits the type given"
+		length += ft_putchar(va_arg(args, int));
 	else if (*string == 's')
 		length += ft_putstr(va_arg(args, char *));
 	else if (*string == 'p')
@@ -109,11 +109,87 @@ int ft_printf(const char *string, ...)
     {
         if (*string == '%')
         {
-            if (*(string + 1) == '#')
+	    if ((*(string + 1) == '#') && (*(string + 2) == '.'))
+	    {
+	        if ((*(string + 3) == '0') && (*(string + 4) == 'f'))
+	        {
+	              int  num = (int)va_arg(args, double);
+	              length += ft_putnbr(num);
+	              length += ft_putchar ('.');
+                      string += 5;
+                }
+                else if ((*(string + 3) == 'f'))
+	        {
+	              int  num = (int)va_arg(args, double);
+	              length += ft_putnbr(num);
+	              length += ft_putchar ('.');
+                      string += 4;
+                }
+		else if (in_range(*(string + 3), '1', '9'))
+		{
+			while (in_range(*(string + 3), '0', '9'))
+			{
+				allign = allign * 10 + (*(string + 3) - '0');
+				string++;
+			}
+			if (*(string + 3) == 'f')
+			{
+				float num = va_arg(args, double);
+				length += put_float(num, allign);
+				string += 4;
+			}
+		}
+	    }
+            else if (*(string + 1) == '#')
             {
                 length += print_hash((char *)(string + 2), args);
                 string += 3;
             }
+	    else if (*(string + 1) == '.')
+	    {
+	        if ((*(string + 2) == '0') && (*(string + 3) == 'f'))
+	        {
+	              int  num = (int)va_arg(args, double);
+	              length += ft_putnbr(num);
+                      string += 4;
+                }
+                else if ((*(string + 2) == 'f'))
+	        {
+	              int  num = (int)va_arg(args, double);
+	              length += ft_putnbr(num);
+	              length += ft_putchar ('.');
+                      string += 3;
+                }
+		else if ((*(string + 2) == 's'))
+		{
+			while (in_range(*(string + 2), '0', '9'))
+			{
+				allign = allign * 10 + (*(string + 2) - '0');
+				string++;
+			}
+			char *str = va_arg(args, char *);
+			while (*str)
+			{
+				length += ft_putchar(*str);
+				str++;
+			}
+			string += 3;
+		}
+		else if (in_range(*(string + 2), '1', '9'))
+		{
+			while (in_range(*(string + 2), '0', '9'))
+			{
+				allign = allign * 10 + (*(string + 2) - '0');
+				string++;
+			}
+			if (*(string + 2) == 'f')
+			{
+				float num = va_arg(args, double);
+				length += put_float(num, allign);
+				string += 3;
+			}
+		}
+	    }
             else if (*(string + 1) == '+')
             {
                 if (*(string + 2) == 'd' || *(string + 2) == 'i')
@@ -147,6 +223,23 @@ int ft_printf(const char *string, ...)
 		    
 	    	}
 	    }
+	    else if (*(string + 1) == '0')
+	    {
+		    while (ft_isdigit(*(string + 2)))
+		    {
+			    allign = allign * 10 + (*(string + 2) - '0');
+			    string++;
+		    }
+		    int num = va_arg(args, int);
+		    int i = 0;
+		    while (i < allign - num_len(num))
+		    {
+			    ft_putchar('0');
+			    i++;
+		    }
+		    length += ft_putnbr(num);
+		    string += 3;
+	    }
 	    else if (ft_isdigit(*(string + 1)))
 	    {
 		    while (ft_isdigit(*(string + 1)))
@@ -161,8 +254,25 @@ int ft_printf(const char *string, ...)
 			    length += ft_putchar(' ');
 			    i++;
 		    }
-		    length += find_specifier((char *)(string + 1), args);
+		    length += ft_putnbr(num);
 		    string += 2;
+	    }
+	    else if (*(string + 1) == '-')
+	    {
+		    while (ft_isdigit(*(string + 2)))
+		    {
+			    allign = allign * 10 + (*(string + 2) - '0');
+			    string++;
+		    } 
+		    int num = va_arg(args, int);
+		    length += ft_putnbr(num);
+		    int i = 0;
+		    while (i < allign - num_len(num))
+		    {
+			    length += ft_putchar(' ');
+			    i++;
+		    }
+		    string += 3;
 	    }
             else
             {
