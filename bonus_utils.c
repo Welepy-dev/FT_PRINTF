@@ -17,7 +17,28 @@ printf("|%#.0f|\n", 5.25);   // Output: |5.|
 printf("|%#.2f|\n", 5.0);    // Output: |5.00|
 */
 
-#include "ft_printf.h"
+bool  ft_isdigit(int c)
+{
+    return (c >= '0' && c <= '9');
+}
+
+size_t num_len(int n)
+{
+    size_t len;
+
+    len = 0;
+    if (n <= 0)
+    {
+	len++;
+	n *= -1;
+    }
+    while (n > 0)
+    {
+	n /= 10;
+	len++;
+    }
+    return (len);
+}
 
 int	put_float(float n, int precision)
 {
