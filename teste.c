@@ -16,7 +16,7 @@
 
 int main(void)
 {
-    ft_printf("custom printf: %+d\n", 42);
-    printf("original printf: %+d\n", 42);
+    ft_printf("custom   printf: |%10d| string dps do teste\n", -42);
+    printf   ("original printf: |%10d| string dps do teste\n", -42);
     return (0);
 }
