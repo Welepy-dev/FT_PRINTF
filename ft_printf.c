@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:26:50 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/06/05 13:19:15 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/11/09 00:22:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ int	find_specifier(char *string, va_list args)
 		length += upper(va_arg(args, unsigned int));
 	else if (*string == '%')
 		length += ft_putchar('%');
-	else if (*string == '#')
-		length += print_hash(*string + 1, args);
 	return (length);
 }
 
@@ -106,13 +104,26 @@ int	ft_printf(const char *string, ...)
 	{
 		if (*string == '%')
 		{
-			length += find_specifier(*string + 1, args);
-			++string;
+			if (*(string + 1) == '#')
+			{
+				length += print_hash((char *)(string + 2), args);
+				string += 3;
+			}
+			else
+			{
+				length += find_specifier((char *)(string + 1), args);
+				string += 2;
+			}
 		}
 		else
+		{
 			length += ft_putchar(*string);
-		++string;
+			++string;
+		}
 	}
 	va_end (args);				//cleans stuff
 	return (length);
 }
+
+//search tommorow a way to send the address of the string without using structs of global variable
+//another way is to use a static iterator

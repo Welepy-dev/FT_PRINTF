@@ -18,7 +18,7 @@ INC_DIR = includes
 OBJ_DIR = .
 HEADER = ft_printf.h
 
-SRC_FILES = ft_printf.c prints.c utils.c
+SRC_FILES = ft_printf.c prints.c utils.c bonus_utils.c
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 OBJ_PATHS = $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
