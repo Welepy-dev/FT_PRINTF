@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
+#include "ft_printf.h"
 
-printf("|%#.0f|\n", 5.0);    // Output: |5.|
-printf("|%#.0f|\n", 5.25);   // Output: |5.|
-printf("|%#.2f|\n", 5.0);    // Output: |5.00|
-*/
+#include "ft_printf.h"
 
 bool  ft_isdigit(int c)
 {
     return (c >= '0' && c <= '9');
+}
+
+bool in_range(int c, int min, int max)
+{
+    return (c >= min && c <= max);
 }
 
 size_t num_len(int n)
@@ -45,6 +47,7 @@ int	put_float(float n, int precision)
 	int		integer;
 	float	decimal;
 	int 	length;
+	int     decimal_precision = precision;
 
 	length = 0;
 	integer = (int)n;
@@ -65,7 +68,8 @@ int	put_float(float n, int precision)
 	  length += ft_putnbr(decimal);
         }
 	else
-	    length += ft_putstr("000000");
+	    while (decimal_precision--)
+	        length += ft_putstr("0");
 	return (length);
 }
 
