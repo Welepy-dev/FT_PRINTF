@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:23:04 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/11/09 00:06:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/11/09 13:32:26 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_num_len(unsigned int num);
 int	ft_ptr_len(uintptr_t num);
 int	ft_putstr(char *str);
 int	ft_putchar(char c);
+int 	put_float(float n, int precision);
 int	ft_putnbr(int n);
 
 char	*ft_uitoa(unsigned int n);

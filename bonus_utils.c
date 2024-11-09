@@ -6,14 +6,12 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 00:02:50 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/06/05 13:19:15 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:50:13 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-printf("|%#x|\n", 255);     for hexadecimal values # adds a 0x or 0X prefix  // Output: |0xff|
-printf("|%#0|\n", 10);     for hexadecimal values # adds a 0  prefix// Output: |012|
-printf("|%#f|\n", 5.0);     # ensures a decimal point is always displayed, even if there are no decimals.// Output: |5.000000|
+
 printf("|%#.0f|\n", 5.0);    // Output: |5.|
 printf("|%#.0f|\n", 5.25);   // Output: |5.|
 printf("|%#.2f|\n", 5.0);    // Output: |5.00|
@@ -21,25 +19,81 @@ printf("|%#.2f|\n", 5.0);    // Output: |5.00|
 
 #include "ft_printf.h"
 
+int	put_float(float n, int precision)
+{
+	int		integer;
+	float	decimal;
+	int 	length;
+
+	length = 0;
+	integer = (int)n;
+	decimal = n - (float)integer;
+	if (decimal < 0)
+		decimal *= -1;
+	length += ft_putnbr(integer);
+	length += ft_putchar('.');
+	
+	while (precision--)
+	{
+		decimal *= 10;
+		length++;
+	}
+	if (decimal)
+	{
+	  decimal += 0.5;
+	  length += ft_putnbr(decimal);
+        }
+	else
+	    length += ft_putstr("000000");
+	return (length);
+}
+
 int	decimal_to_octal(unsigned int decimal_number)
 {
-	
+	int	length;
+	int octal_number;
+	int remainder;
+	int i;
+
+	length = 0;
+	octal_number = 0;
+	i = 1;
+
+	while (decimal_number != 0)
+	{
+		remainder = decimal_number % 8;
+		decimal_number /= 8;
+		octal_number += remainder * i;
+		i *= 10;
+		length++;
+	}
+	ft_putnbr(octal_number);
+	return (length);
 }
 
 int	print_hash(char *string, va_list args)
 {
-	int	lenght;
+	int	length;
 
-	lenght = 0;
+	length = 0;
 	if (*string == 'x')
 	{
-		lenght += ft_putstr("0x");
-		lenght += lower(va_arg(args, unsigned int));
+		length += ft_putstr("0x");
+		length += lower(va_arg(args, unsigned int));
 	}
 	else if (*string == 'X')
 	{
-		lenght += ft_putstr("0X");
-		lenght += upper(va_arg(args, unsigned int));
+		length += ft_putstr("0X");
+		length += upper(va_arg(args, unsigned int));
 	}
-	return (lenght);
+	else if (*string == 'o')
+	{
+		length += ft_putstr("0");
+		length += decimal_to_octal(va_arg(args, unsigned int));
+	}
+	else if (*string == 'f')
+	{
+		length += put_float(va_arg(args, double), 6);
+	}
+	return (length);
 }
