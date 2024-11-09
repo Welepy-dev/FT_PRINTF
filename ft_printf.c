@@ -99,45 +99,63 @@ int	find_specifier(char *string, va_list args)
 
 int ft_printf(const char *string, ...)
 {
-	int     length;
-	va_list args;
+    int     length = 0;
+    va_list args;
 
-	length = 0;
-	va_start(args, string);
-	while (*string)
-	{
-		if (*string == '%')
-		{
-                    if (*(string + 1) == '#')
-		    {
-			length += print_hash((char *)(string + 2), args);
-			string += 3;
-		    }
-		    else if ((*(string + 1) == '+') && (*(string + 1) == 'd' || *(string + 1) == 'i' || *(string + 1) == 'f'))
-		    {
-			if (va_arg(args, int) >= 0)
-			    length += ft_putchar('+');
-			if (*(string + 2) == 'd' || *(string + 1) == 'i')
-			    length += ft_putnbr(va_arg(args, int));
-			else
-			    length += put_float(va_arg(args, double), 6);
-			string += 3;
-		    }
-		    else
-		    {
-			length += find_specifier((char *)(string + 1), args);
-			string += 2;
-		    }
-		}
-		else
-		{
-		    length += ft_putchar(*string);
-		    ++string;
-		}
+    va_start(args, string);
+    while (*string)
+    {
+        if (*string == '%')
+        {
+            // Handle '#' flag
+            if (*(string + 1) == '#')
+            {
+                length += print_hash((char *)(string + 2), args);
+                string += 3;
+            }
+            // Handle '+' flag for positive integer and float types
+            else if (*(string + 1) == '+')
+            {
+                // Check if the specifier is 'd', 'i', or 'f'
+                if (*(string + 2) == 'd' || *(string + 2) == 'i')
+                {
+                    int num = va_arg(args, int);
+                    if (num >= 0)
+                        length += ft_putchar('+');
+                    length += ft_putnbr(num);
+                    string += 3; // Move past %+d or %+i
+                }
+                else if (*(string + 2) == 'f')
+                {
+                    double num = va_arg(args, double);
+                    if (num >= 0)
+                        length += ft_putchar('+');
+                    length += put_float(num, 6);
+                    string += 3; // Move past %+f
+                }
+                else
+                {
+                    // Unrecognized format after '+', handle error or ignore
+                    string += 2;
+                }
+            }
+            // Handle other specifiers
+            else
+            {
+                length += find_specifier((char *)(string + 1), args);
+                string += 2;
+            }
+        }
+        else
+        {
+            length += ft_putchar(*string);
+            ++string;
+        }
     }
     va_end(args);
-    return (length);
+    return length;
 }
+
 
 
 //search tommorow a way to send the address of the string without using structs of global variable
