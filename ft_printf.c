@@ -188,6 +188,17 @@ int ft_printf(const char *string, ...)
 				length += put_float(num, allign);
 				string += 3;
 			}
+			else if (*(string + 2) == 's')
+			{
+				char *str = va_arg(args, char *);
+				int k = 0;
+				while (k < allign)
+				{
+					length += ft_putchar(str[k]);
+					k++;
+				}
+				string += 3;
+			}
 		}
 	    }
             else if (*(string + 1) == '+')
@@ -217,11 +228,30 @@ int ft_printf(const char *string, ...)
 		{
 		    int num = va_arg(args, int);
 		    if (num >= 0)
+		    {
 			length += ft_putchar(' ');
-		    length += ft_putnbr(num);
+			length += ft_putnbr(num);
+		    }
+		    else
+			length += ft_putnbr(num);
 		    string += 3;
 		    
 	    	}
+		else if (in_range(*(string + 2), '1', '9'))
+		{
+			int num = va_arg(args, int);
+			while (in_range(*(string + 2), '1', '9'))
+			{
+				allign = allign * 10 + (*(string + 2) - '0');
+				string++;
+			}
+			while (allign-- > num_len(num))
+				length += ft_putchar(' ');
+			length += ft_putnbr(num);
+			string += 3;
+		}
+		else if (*(string + 2) == '0' && (*(string + 3) == 'd' || *(string + 3) == 'i'))
+			length += ft_putnbr(va_arg(args, int));
 	    }
 	    else if (*(string + 1) == '0')
 	    {
@@ -232,47 +262,232 @@ int ft_printf(const char *string, ...)
 		    }
 		    int num = va_arg(args, int);
 		    int i = 0;
-		    while (i < allign - num_len(num))
+		    while (i <= allign - num_len(num))
 		    {
 			    ft_putchar('0');
 			    i++;
 		    }
-		    length += ft_putnbr(num);
+		    if (*(string + 2) == 'd' || *(string + 2) == 'i')
+		    {
+			    length += ft_putnbr(num);
+		    }
+		    else if (*(string + 2) == 'c')
+		    {
+			    length += ft_putchar(num);
+		    }
+		    else if (*(string + 2) == 's')
+		    {
+			    char *str = va_arg(args, char *);
+			    while (*str)
+			    {
+				    length += ft_putchar(*str);
+				    str++;
+			    }
+		    }
+		    else if (*(string + 2) == 'f')
+		    {
+			    float n = va_arg(args, double);
+			    int integer = (int)n;
+			    float decimal = n - (float)integer;
+			    length += ft_putnbr(integer);
+			    length += ft_putchar('.');
+			    decimal += 0.5;
+			    length += ft_putnbr(decimal);
+		    }
+		    else if (*(string + 2) == 'x')
+		    {
+			    length += lower(num);
+		    }
+		    else if (*(string + 2) == 'X')
+		    {
+			    length += upper(num);
+		    }
 		    string += 3;
 	    }
 	    else if (ft_isdigit(*(string + 1)))
 	    {
+		    int i = 0;
 		    while (ft_isdigit(*(string + 1)))
 		    {
 			    allign = allign * 10 + (*(string + 1) - '0');
 			    string++;
 		    }
-		    int num = va_arg(args, int);
-		    int i = 0;
-		    while (i < allign - num_len(num))
+		    int limit = 0;
+		    if (*(string + 1) == '.')
 		    {
-			    length += ft_putchar(' ');
-			    i++;
+			    while (ft_isdigit(*(string + 2)))
+			    {
+				    limit =  limit * 10 + (*(string + 2) - '0');
+				    string++;
+			    }
+			    if (*(string + 2) == 's')
+			    {
+				    char *str = va_arg(args, char *);
+				    int k = 0;
+
+				    while (k < limit)
+				    {
+					    length += ft_putchar(str[k]);
+					    k++;
+				    }
+				    int i = 0;
+				    while (i <= (allign - ft_strlen(str) + 1))
+				    {
+					    length += ft_putchar(' ');
+					    i++;
+				    }
+				    string += 3;
+			    }
+			    else if (*(string + 2) == 'f')
+			    {
+				    int i = 0;
+				    float n = va_arg(args, double);
+				    int integer = (int)n;
+				    float decimal = n - (float)integer;
+				    while (i < ((allign - (num_len(integer) + 1)) - limit))
+				    {
+					    length += ft_putchar(' ');
+					    i++;
+				    }
+				    while (limit--)
+					    decimal *= 10;
+				    length += ft_putnbr(integer);
+				    length += ft_putchar('.');
+				    decimal += 0.5;
+				    length += ft_putnbr(decimal);
+				    string += 1;
+			    }
 		    }
-		    length += ft_putnbr(num);
+		    if (*(string + 1) == 'd' || *(string + 1) == 'i')
+		    {
+			    int num = va_arg(args, int);
+			    while (i < allign - num_len(num))
+			    {
+				    length += ft_putchar(' ');
+				    i++;
+			    }
+			    length += ft_putnbr(num);
+		    }
+		    else if (*(string + 1) == 'c')
+		    {
+			    while (i < allign - 1)
+			    {
+				    length += ft_putchar(' ');
+				    i++;
+			    }
+			    char c = va_arg(args, int);
+			    length += ft_putchar(c);
+		    }
+		    else if (*(string + 1) == 's')
+		    {
+			    char *str = va_arg(args, char *);
+			    while (i < allign - ft_strlen(str))
+			    {
+				    length += ft_putchar(' ');
+				    i++;
+			    }
+			    while (*str)
+			    {
+				    length += ft_putchar(*str);
+				    str++;
+			    }
+		    }
 		    string += 2;
 	    }
 	    else if (*(string + 1) == '-')
 	    {
+		    int limit = 0;
 		    while (ft_isdigit(*(string + 2)))
 		    {
 			    allign = allign * 10 + (*(string + 2) - '0');
 			    string++;
 		    } 
-		    int num = va_arg(args, int);
-		    length += ft_putnbr(num);
-		    int i = 0;
-		    while (i < allign - num_len(num))
+		    if (*(string + 2) == '.')
 		    {
-			    length += ft_putchar(' ');
-			    i++;
+			    while (ft_isdigit(*(string + 3)))
+			    {
+				    limit =  limit * 10 + (*(string + 3) - '0');
+				    string++;
+			    }
+			    if (*(string + 3) == 's')
+			    {
+				    char *str = va_arg(args, char *);
+				    int k = 0;
+				    while (k < limit)
+				    {
+					    length += ft_putchar(str[k]);
+					    k++;
+				    }
+				    int i = 0;
+				    while (i <= (allign - ft_strlen(str) + 1))
+				    {
+					    length += ft_putchar(' ');
+					    i++;
+				    }
+				    string += 4;
+			    }
+			    else if (*(string + 3) == 'f')
+			    {
+				    int i = 0;
+				    float n = va_arg(args, double);
+				    int integer = (int)n;
+				    float decimal = n - (float)integer;
+				    while (limit--)
+					    decimal *= 10;
+				    length += ft_putnbr(integer);
+				    length += ft_putchar('.');
+				    decimal += 0.5;
+				    length += ft_putnbr(decimal);
+				    string += 4;
+				    while (i < (allign - (num_len(decimal) + num_len(integer) + 1)))
+				    {
+					    length += ft_putchar(' ');
+					    i++;
+				    }
+			    }
 		    }
-		    string += 3;
+		    else if (*(string + 2) == 'd' || *(string + 2) == 'i')
+		    {
+			    int num = va_arg(args, int);
+			    length += ft_putnbr(num);
+			    int i = 0;
+			    while (i < allign - num_len(num))
+			    {
+				    length += ft_putchar(' ');
+				    i++;
+			    }
+			    string += 3;
+		    }
+		    else if (*(string + 2) == 'c')
+		    {
+			    char c = va_arg(args, int);
+			    length += ft_putchar(c);
+			    int i = 0;
+			    while (i < allign - 1)
+			    {
+				    length += ft_putchar(' ');
+				    i++;
+			    }
+			    string += 3;
+		    }
+		    else if (*(string + 2) == 's')
+		    {
+			    char *str = va_arg(args, char *);
+			    int k = 0;
+			    write(1, "teste\n", 6);
+			    while (k < limit)
+			    {
+				    length += ft_putchar(str[k]);
+				    k++;
+			    }
+			    int i = 0;
+			    while (i < allign - ft_strlen(str))
+			    {
+				    length += ft_putchar(' ');
+				    i++;
+			    }
+			    string += 3;
+		    }
 	    }
             else
             {
