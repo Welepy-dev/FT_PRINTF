@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-bool  ft_isdigit(int c)
+bool inline  ft_isdigit(int c)
 {
     return (c >= '0' && c <= '9');
 }
 
-bool in_range(int c, int min, int max)
+bool inline in_range(int c, int min, int max)
 {
     return (c >= min && c <= max);
 }
