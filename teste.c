@@ -6,18 +6,21 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:34:37 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/11/09 15:04:12 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/11/10 22:01:37 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include <stdio.h>
+
 int main(void)
 {
-    // Character tests
-    printf   ("original printf: |%-5c| after char\n", 'A');
-    ft_printf("custom   printf: |%-5c| after char\n", 'A');
-    printf("----------------------------------------------\n");
 
-    printf   ("original printf: |%5c| after char\n", 'B');
+	printf("original printf: |%-5c| after char\n", 'A');
+	ft_printf("custom   printf: |%-5c| after char\n", 'A');
+	printf("----------------------------------------------\n");
+}
+/*    printf   ("original printf: |%5c| after char\n", 'B');
     ft_printf("custom   printf: |%5c| after char\n", 'B');
     printf("----------------------------------------------\n");
 
@@ -101,3 +104,4 @@ int main(void)
 
     return 0;
 }
+*/

@@ -6,9 +6,11 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:20:08 by welepy            #+#    #+#             */
-/*   Updated: 2024/06/05 13:19:09 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:53:57 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int	ft_putstr(char *str)
 {

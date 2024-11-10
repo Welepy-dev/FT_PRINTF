@@ -12,49 +12,49 @@
 
 #include "ft_printf.h"
 
-bool inline  ft_isdigit(int c)
+bool inline	ft_isdigit(int c)
 {
-    return (c >= '0' && c <= '9');
+	return (c >= '0' && c <= '9');
 }
 
-bool inline in_range(int c, int min, int max)
+bool inline	in_range(int c, int min, int max)
 {
-    return (c >= min && c <= max);
+	return (c >= min && c <= max);
 }
 
-size_t num_len(int n)
+size_t	num_len(int n)
 {
-    size_t len;
+	size_t	len;
 
-    len = 0;
-    if (n <= 0)
-    {
-	len++;
-	n *= -1;
-    }
-    while (n > 0)
-    {
-	n /= 10;
-	len++;
-    }
-    return (len);
+	len = 0;
+	if (n <= 0)
+	{
+		len++;
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }
 
 int	put_float(float n, int precision)
 {
-	int		integer;
 	float	decimal;
-	int 	length;
-	int     decimal_precision = precision;
+	int		integer;
+	int		length;
+	int		decimal_precision;
 
 	length = 0;
 	integer = (int)n;
 	decimal = n - (float)integer;
+	decimal_precision = precision;
 	if (decimal < 0)
 		decimal *= -1;
 	length += ft_putnbr(integer);
 	length += ft_putchar('.');
-	
 	while (precision--)
 	{
 		decimal *= 10;
@@ -62,26 +62,25 @@ int	put_float(float n, int precision)
 	}
 	if (decimal)
 	{
-	  decimal += 0.5;
-	  length += ft_putnbr(decimal);
-        }
+		decimal += 0.5;
+		length += ft_putnbr(decimal);
+	}
 	else
-	    while (decimal_precision--)
-	        length += ft_putstr("0");
+		while (decimal_precision--)
+			length += ft_putstr("0");
 	return (length);
 }
 
 int	decimal_to_octal(unsigned int decimal_number)
 {
 	int	length;
-	int octal_number;
-	int remainder;
-	int i;
+	int	octal_number;
+	int	remainder;
+	int	i;
 
 	length = 0;
 	octal_number = 0;
 	i = 1;
-
 	while (decimal_number != 0)
 	{
 		remainder = decimal_number % 8;
