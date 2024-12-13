@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:34:37 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/11/27 18:43:02 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:20:20 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,6 @@
 
 int	main(void)
 {
-	/*char a = 'a';
-    printf   ("original printf: |%01d| \n", -123);
-    ft_printf("custom   printf: |%01d| \n", -123);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |%01d| \n", 0);
-    ft_printf("custom   printf: |%01d| \n", 0);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |% f| \n", -123.456);
-    ft_printf("custom   printf: |% f| \n", -123.456);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |% d| \n", -123);
-    ft_printf("custom   printf: |% d| \n", -123);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |% f| \n", -123.456789);
-    ft_printf("custom   printf: |% f| \n", -123.456789);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |%.2s| \n", "123.456");
-    ft_printf("custom   printf: |%.2s| \n", "123.456");
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |%.10f| \n", 123.4567);
-    ft_printf("custom   printf: |%.10f| \n", 123.4567);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |%#x| \n", 123);
-    ft_printf("custom   printf: |%#x| \n", 123);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |%#X| \n", 123);
-    ft_printf("custom   printf: |%#X| \n", 123);
-    printf("----------------------------------------------\n");
-    printf   ("original printf: |%#f| \n", 123.456);
-    ft_printf("custom   printf: |%#f| \n", 123.456);           //averiguar
-    printf("----------------------------------------------\n");*/
-
 	printf("original printf |%01d| \n", 0);
 	printf("original printf |%02d| \n", -1);
 	printf("original printf |%04d| \n", 9);
@@ -158,121 +126,118 @@ int	main(void)
 	printf("original printf |%02X| \n", -100);
 	printf("original printf |%03X| \n", -101);
 
-ft_printf("custom printf   |%01d| \n", 0);
-ft_printf("custom printf   |%02d| \n", -1);
-ft_printf("custom printf   |%04d| \n", 9);
-ft_printf("custom printf   |%01d| \n", 10);
-ft_printf("custom printf   |%02d| \n", 11);
-ft_printf("custom printf   |%03d| \n", 15);
-ft_printf("custom printf   |%04d| \n", 16);
-ft_printf("custom printf   |%05d| \n", 17);
-ft_printf("custom printf   |%01d| \n", 99);
-ft_printf("custom printf   |%02d| \n", 100);
-ft_printf("custom printf   |%03d| \n", 101);
-ft_printf("custom printf   |%01d| \n", -9);
-ft_printf("custom printf   |%02d| \n", -10);
-ft_printf("custom printf   |%03d| \n", -11);
-ft_printf("custom printf   |%04d| \n", -14);
-ft_printf("custom printf   |%05d| \n", -15);
-ft_printf("custom printf   |%06d| \n", -16);
-ft_printf("custom printf   |%01d| \n", -99);
-ft_printf("custom printf   |%02d| \n", -100);
-ft_printf("custom printf   |%03d| \n", -101);
-ft_printf("custom printf   |%09d| \n", INT_MAX);
-ft_printf("custom printf   |%010d| \n", INT_MIN);
-ft_printf("custom printf   |%01i| \n", 0);
-ft_printf("custom printf   |%02i| \n", -1);
-ft_printf("custom printf   |%03i| \n", 1);
-ft_printf("custom printf   |%04i| \n", 9);
-ft_printf("custom printf   |%01i| \n", 10);
-ft_printf("custom printf   |%02i| \n", 11);
-ft_printf("custom printf   |%03i| \n", 15);
-ft_printf("custom printf   |%04i| \n", 16);
-ft_printf("custom printf   |%05i| \n", 17);
-ft_printf("custom printf   |%01i| \n", 99);
-ft_printf("custom printf   |%02i| \n", 100);
-ft_printf("custom printf   |%03i| \n", 101);
-ft_printf("custom printf   |%01i| \n", -9);
-ft_printf("custom printf   |%02i| \n", -10);
-ft_printf("custom printf   |%03i| \n", -11);
-ft_printf("custom printf   |%04i| \n", -14);
-ft_printf("custom printf   |%05i| \n", -15);
-ft_printf("custom printf   |%06i| \n", -16);
-ft_printf("custom printf   |%01i| \n", -99);
-ft_printf("custom printf   |%02i| \n", -100);
-ft_printf("custom printf   |%03i| \n", -101);
-ft_printf("custom printf   |%09i| \n", INT_MAX);
-ft_printf("custom printf   |%010i| \n", INT_MIN);
-ft_printf("custom printf   |%01u| \n", 0);
-ft_printf("custom printf   |%02u| \n", -1);
-ft_printf("custom printf   |%03u| \n", 1);
-ft_printf("custom printf   |%04u| \n", 9);
-ft_printf("custom printf   |%01u| \n", 10);
-ft_printf("custom printf   |%02u| \n", 11);
-ft_printf("custom printf   |%03u| \n", 15);
-ft_printf("custom printf   |%04u| \n", 16);
-ft_printf("custom printf   |%05u| \n", 17);
-ft_printf("custom printf   |%01u| \n", 99);
-ft_printf("custom printf   |%02u| \n", 100);
-ft_printf("custom printf   |%03u| \n", 101);
-ft_printf("custom printf   |%01u| \n", -9);
-ft_printf("custom printf   |%02u| \n", -10);
-ft_printf("custom printf   |%03u| \n", -11);
-ft_printf("custom printf   |%04u| \n", -14);	//problema
-ft_printf("custom printf   |%05u| \n", -15);	//problema
-ft_printf("custom printf   |%06u| \n", -16);	//problema
-ft_printf("custom printf   |%01u| \n", -99);
-ft_printf("custom printf   |%02u| \n", -100);
-ft_printf("custom printf   |%03u| \n", -101);
-ft_printf("custom printf   |%09u| \n", INT_MAX);
-ft_printf("custom printf   |%010u| \n", INT_MIN);
-ft_printf("custom printf   |%01x| \n", 0);
-ft_printf("custom printf   |%02x| \n", -1);
-ft_printf("custom printf   |%03x| \n", 1);
-ft_printf("custom printf   |%04x| \n", 9);
-ft_printf("custom printf   |%01x| \n", 10);
-ft_printf("custom printf   |%02x| \n", 11);
-ft_printf("custom printf   |%03x| \n", 15);
-ft_printf("custom printf   |%04x| \n", 16);
-ft_printf("custom printf   |%05x| \n", 17);
-ft_printf("custom printf   |%01x| \n", 99);
-ft_printf("custom printf   |%02x| \n", 100);
-ft_printf("custom printf   |%03x| \n", 101);
-ft_printf("custom printf   |%01x| \n", -9);
-ft_printf("custom printf   |%02x| \n", -10);
-ft_printf("custom printf   |%03x| \n", -11);
-ft_printf("custom printf   |%04x| \n", -14);
-ft_printf("custom printf   |%05x| \n", -15);
-ft_printf("custom printf   |%06x| \n", -16);
-ft_printf("custom printf   |%01x| \n", -99);
-ft_printf("custom printf   |%02x| \n", -100);
-ft_printf("custom printf   |%03x| \n", -101);
-ft_printf("custom printf   |%01X| \n", 0);
-ft_printf("custom printf   |%02X| \n", -1);
-ft_printf("custom printf   |%03X| \n", 1);
-ft_printf("custom printf   |%04X| \n", 9);
-ft_printf("custom printf   |%01X| \n", 10);
-ft_printf("custom printf   |%02X| \n", 11);
-ft_printf("custom printf   |%03X| \n", 15);
-ft_printf("custom printf   |%04X| \n", 16);
-ft_printf("custom printf   |%05X| \n", 17);
-ft_printf("custom printf   |%01X| \n", 99);
-ft_printf("custom printf   |%02X| \n", 100);
-ft_printf("custom printf   |%03X| \n", 101);
-ft_printf("custom printf   |%01X| \n", -9);
-ft_printf("custom printf   |%02X| \n", -10);
-ft_printf("custom printf   |%03X| \n", -11);
-ft_printf("custom printf   |%04X| \n", -14);
-ft_printf("custom printf   |%05X| \n", -15);
-ft_printf("custom printf   |%06X| \n", -16);
-ft_printf("custom printf   |%01X| \n", -99);
-ft_printf("custom printf   |%02X| \n", -100);
-ft_printf("custom printf   |%03X| \n", -101);
-    
-	
-	return (0);
-
-
+	ft_printf("custom printf   |%01d| \n", 0);
+	ft_printf("custom printf   |%02d| \n", -1);
+	ft_printf("custom printf   |%04d| \n", 9);
+	ft_printf("custom printf   |%01d| \n", 10);
+	ft_printf("custom printf   |%02d| \n", 11);
+	ft_printf("custom printf   |%03d| \n", 15);
+	ft_printf("custom printf   |%04d| \n", 16);
+	ft_printf("custom printf   |%05d| \n", 17);
+	ft_printf("custom printf   |%01d| \n", 99);
+	ft_printf("custom printf   |%02d| \n", 100);
+	ft_printf("custom printf   |%03d| \n", 101);
+	ft_printf("custom printf   |%01d| \n", -9);
+	ft_printf("custom printf   |%02d| \n", -10);
+	ft_printf("custom printf   |%03d| \n", -11);
+	ft_printf("custom printf   |%04d| \n", -14);
+	ft_printf("custom printf   |%05d| \n", -15);
+	ft_printf("custom printf   |%06d| \n", -16);
+	ft_printf("custom printf   |%01d| \n", -99);
+	ft_printf("custom printf   |%02d| \n", -100);
+	ft_printf("custom printf   |%03d| \n", -101);
+	ft_printf("custom printf   |%09d| \n", INT_MAX);
+	ft_printf("custom printf   |%010d| \n", INT_MIN);
+	ft_printf("custom printf   |%01i| \n", 0);
+	ft_printf("custom printf   |%02i| \n", -1);
+	ft_printf("custom printf   |%03i| \n", 1);
+	ft_printf("custom printf   |%04i| \n", 9);
+	ft_printf("custom printf   |%01i| \n", 10);
+	ft_printf("custom printf   |%02i| \n", 11);
+	ft_printf("custom printf   |%03i| \n", 15);
+	ft_printf("custom printf   |%04i| \n", 16);
+	ft_printf("custom printf   |%05i| \n", 17);
+	ft_printf("custom printf   |%01i| \n", 99);
+	ft_printf("custom printf   |%02i| \n", 100);
+	ft_printf("custom printf   |%03i| \n", 101);
+	ft_printf("custom printf   |%01i| \n", -9);
+	ft_printf("custom printf   |%02i| \n", -10);
+	ft_printf("custom printf   |%03i| \n", -11);
+	ft_printf("custom printf   |%04i| \n", -14);
+	ft_printf("custom printf   |%05i| \n", -15);
+	ft_printf("custom printf   |%06i| \n", -16);
+	ft_printf("custom printf   |%01i| \n", -99);
+	ft_printf("custom printf   |%02i| \n", -100);
+	ft_printf("custom printf   |%03i| \n", -101);
+	ft_printf("custom printf   |%09i| \n", INT_MAX);
+	ft_printf("custom printf   |%010i| \n", INT_MIN);
+	ft_printf("custom printf   |%01u| \n", 0);
+	ft_printf("custom printf   |%02u| \n", -1);
+	ft_printf("custom printf   |%03u| \n", 1);
+	ft_printf("custom printf   |%04u| \n", 9);
+	ft_printf("custom printf   |%01u| \n", 10);
+	ft_printf("custom printf   |%02u| \n", 11);
+	ft_printf("custom printf   |%03u| \n", 15);
+	ft_printf("custom printf   |%04u| \n", 16);
+	ft_printf("custom printf   |%05u| \n", 17);
+	ft_printf("custom printf   |%01u| \n", 99);
+	ft_printf("custom printf   |%02u| \n", 100);
+	ft_printf("custom printf   |%03u| \n", 101);
+	ft_printf("custom printf   |%01u| \n", -9);
+	ft_printf("custom printf   |%02u| \n", -10);
+	ft_printf("custom printf   |%03u| \n", -11);
+	ft_printf("custom printf   |%04u| \n", -14);	//problema
+	ft_printf("custom printf   |%05u| \n", -15);	//problema
+	ft_printf("custom printf   |%06u| \n", -16);	//problema
+	ft_printf("custom printf   |%01u| \n", -99);
+	ft_printf("custom printf   |%02u| \n", -100);
+	ft_printf("custom printf   |%03u| \n", -101);
+	ft_printf("custom printf   |%09u| \n", INT_MAX);
+	ft_printf("custom printf   |%010u| \n", INT_MIN);
+	ft_printf("custom printf   |%01x| \n", 0);
+	ft_printf("custom printf   |%02x| \n", -1);
+	ft_printf("custom printf   |%03x| \n", 1);
+	ft_printf("custom printf   |%04x| \n", 9);
+	ft_printf("custom printf   |%01x| \n", 10);
+	ft_printf("custom printf   |%02x| \n", 11);
+	ft_printf("custom printf   |%03x| \n", 15);
+	ft_printf("custom printf   |%04x| \n", 16);
+	ft_printf("custom printf   |%05x| \n", 17);
+	ft_printf("custom printf   |%01x| \n", 99);
+	ft_printf("custom printf   |%02x| \n", 100);
+	ft_printf("custom printf   |%03x| \n", 101);
+	ft_printf("custom printf   |%01x| \n", -9);
+	ft_printf("custom printf   |%02x| \n", -10);
+	ft_printf("custom printf   |%03x| \n", -11);
+	ft_printf("custom printf   |%04x| \n", -14);
+	ft_printf("custom printf   |%05x| \n", -15);
+	ft_printf("custom printf   |%06x| \n", -16);
+	ft_printf("custom printf   |%01x| \n", -99);
+	ft_printf("custom printf   |%02x| \n", -100);
+	ft_printf("custom printf   |%03x| \n", -101);
+	ft_printf("custom printf   |%01X| \n", 0);
+	ft_printf("custom printf   |%02X| \n", -1);
+	ft_printf("custom printf   |%03X| \n", 1);
+	ft_printf("custom printf   |%04X| \n", 9);
+	ft_printf("custom printf   |%01X| \n", 10);
+	ft_printf("custom printf   |%02X| \n", 11);
+	ft_printf("custom printf   |%03X| \n", 15);
+	ft_printf("custom printf   |%04X| \n", 16);
+	ft_printf("custom printf   |%05X| \n", 17);
+	ft_printf("custom printf   |%01X| \n", 99);
+	ft_printf("custom printf   |%02X| \n", 100);
+	ft_printf("custom printf   |%03X| \n", 101);
+	ft_printf("custom printf   |%01X| \n", -9);
+	ft_printf("custom printf   |%02X| \n", -10);
+	ft_printf("custom printf   |%03X| \n", -11);
+	ft_printf("custom printf   |%04X| \n", -14);
+	ft_printf("custom printf   |%05X| \n", -15);
+	ft_printf("custom printf   |%06X| \n", -16);
+	ft_printf("custom printf   |%01X| \n", -99);
+	ft_printf("custom printf   |%02X| \n", -100);
+	ft_printf("custom printf   |%03X| \n", -101);
+	return 0;
+}
 
 /*    ft_printf(" %+d \n", 0);
     ft_printf(" %+d \n", -1);
@@ -380,8 +345,35 @@ ft_printf("custom printf   |%03X| \n", -101);
     printf   ("original printf: |%%| percent sign\n");
     ft_printf("custom   printf: |%%| percent sign\n");
     printf("----------------------------------------------\n");
-    
+	char a = 'a';
+    printf   ("original printf: |%01d| \n", -123);
+    ft_printf("custom   printf: |%01d| \n", -123);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |%01d| \n", 0);
+    ft_printf("custom   printf: |%01d| \n", 0);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |% f| \n", -123.456);
+    ft_printf("custom   printf: |% f| \n", -123.456);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |% d| \n", -123);
+    ft_printf("custom   printf: |% d| \n", -123);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |% f| \n", -123.456789);
+    ft_printf("custom   printf: |% f| \n", -123.456789);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |%.2s| \n", "123.456");
+    ft_printf("custom   printf: |%.2s| \n", "123.456");
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |%.10f| \n", 123.4567);
+    ft_printf("custom   printf: |%.10f| \n", 123.4567);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |%#x| \n", 123);
+    ft_printf("custom   printf: |%#x| \n", 123);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |%#X| \n", 123);
+    ft_printf("custom   printf: |%#X| \n", 123);
+    printf("----------------------------------------------\n");
+    printf   ("original printf: |%#f| \n", 123.456);
+    ft_printf("custom   printf: |%#f| \n", 123.456);           //averiguar
+    printf("----------------------------------------------\n");
     */
-
-    return 0;
-}
