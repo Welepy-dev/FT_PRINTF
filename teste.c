@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 11:34:37 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/12/13 16:20:20 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:52:12 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,10 +185,10 @@ int	main(void)
 	ft_printf("custom printf   |%03u| \n", 101);
 	ft_printf("custom printf   |%01u| \n", -9);
 	ft_printf("custom printf   |%02u| \n", -10);
-	ft_printf("custom printf   |%03u| \n", -11);
-	ft_printf("custom printf   |%04u| \n", -14);	//problema
-	ft_printf("custom printf   |%05u| \n", -15);	//problema
-	ft_printf("custom printf   |%06u| \n", -16);	//problema
+	ft_printf("custom printf   |%04u| \n", -11);
+	ft_printf("custom printf   |%04u| \n", -14);
+	ft_printf("custom printf   |%05u| \n", -15);
+	ft_printf("custom printf   |%06u| \n", -16);
 	ft_printf("custom printf   |%01u| \n", -99);
 	ft_printf("custom printf   |%02u| \n", -100);
 	ft_printf("custom printf   |%03u| \n", -101);
@@ -199,8 +199,8 @@ int	main(void)
 	ft_printf("custom printf   |%03x| \n", 1);
 	ft_printf("custom printf   |%04x| \n", 9);
 	ft_printf("custom printf   |%01x| \n", 10);
-	ft_printf("custom printf   |%02x| \n", 11);
-	ft_printf("custom printf   |%03x| \n", 15);
+	ft_printf("custom printf   |%02x| \n", 11);	//problema
+	ft_printf("custom printf   |%03x| \n", 15);	//problema
 	ft_printf("custom printf   |%04x| \n", 16);
 	ft_printf("custom printf   |%05x| \n", 17);
 	ft_printf("custom printf   |%01x| \n", 99);
@@ -220,8 +220,8 @@ int	main(void)
 	ft_printf("custom printf   |%03X| \n", 1);
 	ft_printf("custom printf   |%04X| \n", 9);
 	ft_printf("custom printf   |%01X| \n", 10);
-	ft_printf("custom printf   |%02X| \n", 11);
-	ft_printf("custom printf   |%03X| \n", 15);
+	ft_printf("custom printf   |%02X| \n", 11);	//problema
+	ft_printf("custom printf   |%03X| \n", 15);	//problema
 	ft_printf("custom printf   |%04X| \n", 16);
 	ft_printf("custom printf   |%05X| \n", 17);
 	ft_printf("custom printf   |%01X| \n", 99);
@@ -236,6 +236,11 @@ int	main(void)
 	ft_printf("custom printf   |%01X| \n", -99);
 	ft_printf("custom printf   |%02X| \n", -100);
 	ft_printf("custom printf   |%03X| \n", -101);
+
+	ft_printf("custom printf   |%04d| \n", 9);
+	ft_printf("custom printf   |%04d| \n", 16);
+	ft_printf("custom printf   |%05d| \n", 17);
+	
 	return 0;
 }
 
