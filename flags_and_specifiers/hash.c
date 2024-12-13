@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 15:04:41 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/11/25 13:06:28 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:21:46 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	hash(char **string, int *length, va_list args)
 	(*string)++;
 	if (**string == '.')
 		dot(string, args, '\0', length);
-        else
+	else
 		only_hash(string, args, length);//ok
 }
