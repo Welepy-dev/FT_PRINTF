@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:23:04 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/11/24 18:12:59 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:20:31 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_putchar(char c);
 int		ft_putnbr(int n);
 
 bool	in_range(int c, int min, int max);
+bool	is_negative(int n);
 bool	ft_isdigit(int c);
 
 char	*ft_uitoa(unsigned int n);
