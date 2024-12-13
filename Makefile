@@ -6,7 +6,7 @@
 #    By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 18:28:31 by welepy            #+#    #+#              #
-#    Updated: 2024/11/17 17:22:27 by marcsilv         ###   ########.fr        #
+#    Updated: 2024/12/13 16:08:15 by marcsilv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,12 @@ OBJ_DIR		=	.
 
 HEADER		=	ft_printf.h
 
-SRC_FILES	=	utils.c				\
-			prints.c			\
+SRC_FILES	=	prints.c			\
 			ft_printf.c			\
-			bonus_utils.c			\
+			./utils/len.c			\
+			./utils/bools.c			\
+			./utils/conversions.c		\
+			./utils/utils.c			\
 			./flags_and_specifiers/hash.c	\
 			./flags_and_specifiers/digits.c	\
 			./flags_and_specifiers/zero.c	\
