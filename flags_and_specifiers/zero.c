@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:52:11 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/11/27 18:46:53 by marcsilv         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:48:05 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	print_zero(int *length, char **string, va_list args)
 		}
 		length += ft_putchar('-');
 	}
+	if ((**(string) == 'u' || **(string) == 'x' || **(string) == 'X') && is_negative(i[2]))
+		i[0] -= 3;
+	else if ((**(string) == 'x' || **(string) == 'X') && i[2] > 16)
+		i[0]++;
 	while (i[1] < i[0] - (int)num_len(i[2]))
 	{
 		ft_putchar('0');
