@@ -1,0 +1,1 @@
+deveria colocar um aviso no caso de colocar uma variavel indefinida? ex.: quando se coloca %d mas se passa long?
