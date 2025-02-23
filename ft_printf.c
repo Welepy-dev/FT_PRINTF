@@ -6,7 +6,7 @@
 /*   By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:26:50 by marcsilv          #+#    #+#             */
-/*   Updated: 2024/11/25 11:05:26 by marcsilv         ###   ########.fr       */
+/*   Updated: 2025/02/23 12:37:16 by marcsilv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	upper(unsigned int decimalnumber)
 	return (i);
 }
 
-void	find_specifier(char **string, va_list args, int *length)
+static void	find_specifier(char **string, va_list args, int *length)
 {
 	if (**string == 'c')
 		length += ft_putchar(va_arg(args, int));
