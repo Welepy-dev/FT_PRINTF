@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marcsilv <marcsilv@student.42.fr>          +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/04 18:28:31 by welepy            #+#    #+#              #
-#    Updated: 2024/12/13 16:08:15 by marcsilv         ###   ########.fr        #
+#    Updated: 2025/02/25 13:35:43 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_FILES	=	prints.c			\
 			./flags_and_specifiers/zero.c	\
 			./flags_and_specifiers/space.c	\
 			./flags_and_specifiers/dot.c	\
+			./flags_and_specifiers/minus.c \
 			./flags_and_specifiers/plus.c	\
 
 OBJ_FILES	= 	$(SRC_FILES:.c=.o)
